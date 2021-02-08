@@ -21,22 +21,22 @@
         </dx-box>
     </dxi-item>
     <dxi-item [ratio]="2" [baseSize]="150">
-        <dx-box direction="col" [width]="270" class="eventBox">
+        <dx-box direction="col" [width]="270" class="eventBox" *ngFor="let item of selectedItems">
             <dxi-item [ratio]="6" [baseSize]="30" class="header">
-                {{selectsdItem.eventName}}
+                {{item.eventName}}
             </dxi-item>
             <dxi-item [ratio]="6" [baseSize]="30">
-                {{selectsdItem.eventType}}
+                {{item.eventType}}
             </dxi-item>
-            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="selectsdItem.eventType == 'Мероприятия'">
-                {{selectsdItem.place}} <br />
-                {{selectsdItem.time}}
+            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="item.eventType == 'Мероприятия'">
+                {{item.place}} <br />
+                {{item.time}}
             </dxi-item>
-            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="selectsdItem.eventType == 'Праздничные дни'">
-                {{selectsdItem.cost}}
+            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="item.eventType == 'Праздничные дни'">
+                {{item.cost}}
             </dxi-item>
-            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="selectsdItem.eventType == 'Пометки / Другое'">
-                {{selectsdItem.mark}} 
+            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="item.eventType == 'Пометки / Другое'">
+                {{item.mark}} 
             </dxi-item>
         </dx-box>
     </dxi-item>

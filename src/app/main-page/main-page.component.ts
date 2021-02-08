@@ -11,7 +11,7 @@ export class MainPageComponent implements OnInit {
 
   @ViewChild(AddComponent, {static: false}) private addPopupComp!: AddComponent;
   public currentDate!: Date;
-  public selectsdItem: ItemInerface ={
+  public baseItem: ItemInerface = {
     eventName: 'Событие не назначено',
     eventType: 'Не выбрано',
     place: '',
@@ -19,6 +19,7 @@ export class MainPageComponent implements OnInit {
     cost: 0,
     mark: ''
   };
+  public selectedItems: ItemInerface[] =[this.baseItem];
   public cellTemplate: string = 'cellTemplate';
   public dates: string[] = [];
 
@@ -27,24 +28,18 @@ export class MainPageComponent implements OnInit {
   }
 
   changeDate(event: any): void{ 
-    this.selectsdItem = {
-      eventName: 'Событие не назначено',
-      eventType: 'Не выбрано',
-      place: '',
-      time: '',
-      cost: 0,
-      mark: ''
-    };
     this.currentDate = event.value;
     const item = localStorage.getItem(this.currentDate.toLocaleDateString());
-    if (item) this.selectsdItem = JSON.parse(item); 
+    if (item) this.selectedItems = JSON.parse(item); 
+    else this.selectedItems = [this.baseItem];
   }
 
   showAdd = () => this.currentDate? this.addPopupComp.showPopup = true: notify("Выберите дату", "warning", 3000);
   
   onSubmitAdd = () => {
     const date = this.currentDate.toLocaleDateString();
-    localStorage.setItem(date, JSON.stringify(this.addPopupComp.item));
+    this.selectedItems.push(this.addPopupComp.item);
+    localStorage.setItem(date, JSON.stringify(this.selectedItems));
   }
 
   getCellCssClass(date: any) {
@@ -52,7 +47,7 @@ export class MainPageComponent implements OnInit {
     const item = localStorage.getItem(date);
     if (!item) return '';
     const parsedObg = JSON.parse(item); 
-    switch(parsedObg.eventType){
+    switch(parsedObg[0].eventType){
       case 'Мероприятия': return 'event';
       case 'Праздничные дни': return 'holyday';
       case 'Пометки / Другое': return 'tip';
