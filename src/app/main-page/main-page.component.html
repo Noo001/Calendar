@@ -1,0 +1,45 @@
+<dx-box direction="row" width="100%" [height]="500">
+    <dxi-item [ratio]="1" [baseSize]="150">
+        <dx-box direction="col" [width]="270">
+            <dxi-item [ratio]="6" [baseSize]="280">
+                <dx-calendar #calendar
+                    id="calendar-container" 
+                    (onValueChanged)="changeDate($event)"
+                    [cellTemplate]="cellTemplate"
+                    >
+                        <span *dxTemplate="let cell of 'cellTemplate'" [ngClass]="getCellCssClass(cell.date)">
+                            {{cell.text}}
+                        </span>
+                </dx-calendar>
+            </dxi-item>
+            <dxi-item [ratio]="1" [baseSize]="150">
+                <dx-button
+                    text="Добавить"
+                    (onClick)="showAdd()"
+                ></dx-button>
+            </dxi-item>
+        </dx-box>
+    </dxi-item>
+    <dxi-item [ratio]="2" [baseSize]="150">
+        <dx-box direction="col" [width]="270" class="eventBox">
+            <dxi-item [ratio]="6" [baseSize]="30" class="header">
+                {{selectsdItem.eventName}}
+            </dxi-item>
+            <dxi-item [ratio]="6" [baseSize]="30">
+                {{selectsdItem.eventType}}
+            </dxi-item>
+            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="selectsdItem.eventType == 'Мероприятия'">
+                {{selectsdItem.place}} <br />
+                {{selectsdItem.time}}
+            </dxi-item>
+            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="selectsdItem.eventType == 'Праздничные дни'">
+                {{selectsdItem.cost}}
+            </dxi-item>
+            <dxi-item [ratio]="6" [baseSize]="30"  *ngIf="selectsdItem.eventType == 'Пометки / Другое'">
+                {{selectsdItem.mark}} 
+            </dxi-item>
+        </dx-box>
+    </dxi-item>
+</dx-box>
+
+<app-add (submit)="onSubmitAdd()"></app-add>

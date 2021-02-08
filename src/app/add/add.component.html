@@ -1,0 +1,64 @@
+<dx-popup
+        [width]="270"
+        [height]="370"
+        [showTitle]="true"
+        title="Добавить сoбытие"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="false"
+        [(visible)]="showPopup">
+        
+        <dxi-item itemType="group" [colCount]="1">
+            <dxi-item>Название события</dxi-item>
+            <dx-text-box [(value)]="item.eventName"><dxo-label [visible]="false"></dxo-label></dx-text-box>
+
+            <dxi-item>Тип события</dxi-item>
+            <dxi-item>
+                <dx-select-box
+                    [items]= "items"
+                    [height]="40"
+                    (onValueChanged)="changeType($event)"
+                    [value] = "items[0]"
+                ></dx-select-box>
+                <dxo-label [visible]="false"></dxo-label>
+            </dxi-item>
+
+            <dxi-item itemType="group" *ngIf="item.eventType == 'Мероприятия'">
+                <dxi-item>Куда идти?</dxi-item>
+                <dx-text-box [(value)]="item.place"><dxo-label [visible]="false"></dxo-label></dx-text-box>
+
+                <dxi-item>Во сколько?</dxi-item>
+                <dx-text-box [(value)]="item.time">
+                    <dxo-label [visible]="false"></dxo-label>
+                    <dxi-validation-rule type="required" message="Не указано время"></dxi-validation-rule>
+                </dx-text-box>
+            </dxi-item>
+
+            <dxi-item itemType="group" *ngIf="item.eventType == 'Праздничные дни'">
+                <dxi-item >Бюджет</dxi-item>
+                <dx-number-box [(value)]="item.cost"><dxo-label [visible]="false"></dxo-label></dx-number-box>
+                <dxi-validation-rule type="required" message="Не указан Бюджет"></dxi-validation-rule>
+            </dxi-item>
+
+            <dxi-item itemType="group" *ngIf="item.eventType == 'Пометки / Другое'">
+                <dxi-item>Заметочка</dxi-item>
+                <dx-text-area [(value)]="item.mark">
+                    <dxo-label [visible]="false"></dxo-label>
+                    <dxi-validation-rule type="required" message="Не указанa Заметочка"></dxi-validation-rule>
+                </dx-text-area>
+            </dxi-item>
+
+            <br />
+            <dxi-item itemType="group" [colCount]="2" >
+                <dx-button
+                    id="cancelButton"
+                    text="Отмена"
+                    (onClick)="onCancel()"
+                ></dx-button>
+                <dx-button
+                    text="Сохранить"
+                    (onClick)="onSave()"
+                ></dx-button>
+            </dxi-item>
+        </dxi-item>
+        
+</dx-popup>

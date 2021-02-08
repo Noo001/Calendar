@@ -1,0 +1,32 @@
+::ng-deep .dx-calendar-cell:not(.dx-calendar-other-month) .holyday{
+    text-shadow: none;
+    font-weight: bold;
+    color: #ff3091;
+}
+
+::ng-deep .dx-calendar-cell:not(.dx-calendar-other-month) .event{
+    text-shadow: none;
+    font-weight: bold;
+    color: #ffb730;
+}
+
+::ng-deep .dx-calendar-cell:not(.dx-calendar-other-month) .tip{
+    text-shadow: none;
+    font-weight: bold;
+    color: #30ff5d;
+}
+
+.eventBox{
+    border: black solid 1px;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.header{
+    text-decoration: underline;
+    color: blue;
+}
+
+*{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}

@@ -1,27 +1,18 @@
 # Calendar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Разработать приложение, позволяющее отмечать события разных видов и хранить их у себя в браузере.
+Приложение должно поддерживать 3 типа событий:
+− Праздничные дни (событие имеет дополнительное поле, в котором указывается сумма денег, которая будет потрачена в этот день).
+− Мероприятия (эти события имеют 2 дополнительных поля – адрес и время).
+− Пометки / Другое (это событие имеет дополнительное текстовое поле).
+В левой части приложения находится календарь, в котором пользователь выбирает дату, в правой части приложения появляется список событий, которые назначены на выбранную дату. Список справа должен также отображать дополнительные поля в зависимости от типа события.
+По наведению мышью на запись появляются иконки редактирования и удаления.
+Под календарём находится кнопка «добавить», которая переводит нас на страницу добавления записи. Редактирование события может выглядеть точно также.
+Тип события можно менять, при этом дополнительные поля удаляются.
+Опционально, но было бы неплохо:
+− Подсвечивать дни в календаре, на которые назначены события.
+− Не терять данные при обновлении страницы.
+− Подсвечивать каким-нибудь образом цветом текстовые поля с не введённым текстом, невыбранной датой или суммой, либо текстом короче 4-х символов.
+− Писать текст ошибки «ввода в поле» под или над полем.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* В ходе выполнения можете делать любые предположения и использовать любые сторонние компоненты.
